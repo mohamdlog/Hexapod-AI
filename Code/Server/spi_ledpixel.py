@@ -225,7 +225,8 @@ class Freenove_SPI_LedPixel(object):
             g = rgb_min
             b = rgb_max - rgb_adj
         return [r, g, b]
-    
+
+
 if __name__ == '__main__':
     import time
     import os
@@ -290,10 +291,3 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         # Close the SPI connection on keyboard interrupt
         led.led_close()
-        
-    
-
-
-
-
-

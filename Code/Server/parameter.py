@@ -129,6 +129,7 @@ class ParameterManager:
         # Get the Raspberry Pi version from the parameter file
         return self.get_param('Pi_Version')
 
+
 if __name__ == '__main__':
     # Entry point of the script
     manager = ParameterManager()

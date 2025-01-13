@@ -37,6 +37,7 @@ class Service():
             self.active = False
             print("\nServer de-activated. Enter 'y' to activate the server.")
 
+
 if __name__ == '__main__':
     server = Service()
     print("NOTE: Do not exit without de-activating the server\n")

@@ -119,7 +119,7 @@ class Led:
             while True:
                 self.rainbowCycle()
 
-# Main program logic follows:
+
 if __name__ == '__main__':
     print ('Program is starting ... ')
     led = Led()       
@@ -137,4 +137,3 @@ if __name__ == '__main__':
         led.colorWipe([0, 0, 0], 10)
     finally:
         print ("\nEnd of program")
-        

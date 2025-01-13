@@ -46,4 +46,3 @@ if __name__ == '__main__':
         adc.adc.close()
         print ("\nEnd of program")
     pass
-

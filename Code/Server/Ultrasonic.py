@@ -13,7 +13,6 @@ class Ultrasonic:
         distance_cm = self.sensor.distance * 100
         return  int(distance_cm)
         
-# Main program logic follows:
+
 if __name__ == '__main__':
     pass
-        

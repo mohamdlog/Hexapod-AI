@@ -41,7 +41,8 @@ def servo_installation_position():
         else:
             S.setServoAngle(i,90)
     time.sleep(3)
-# Main program logic follows:
+
+
 if __name__ == '__main__':
     print("Now servos will rotate to certain angles.") 
     print("Please keep the program running when installing the servos.")
@@ -52,5 +53,3 @@ if __name__ == '__main__':
         except KeyboardInterrupt:
             print ("\nEnd of program")
             break
-
-

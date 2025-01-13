@@ -125,7 +125,7 @@ class IMU:
         self.yaw = yaw
         return self.pitch,self.roll,self.yaw
 
-# Main program logic follows:
+
 if __name__ == '__main__':
     s=IMU()
     time1=time.time()
@@ -138,9 +138,3 @@ if __name__ == '__main__':
             print(e)
             os.system("i2cdetect -y 1")
             break
-
-
-        
-        
-        
-        

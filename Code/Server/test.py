@@ -126,6 +126,8 @@ def bb():
         for i in range(150,90,-1):
             servo.setServoAngle(0,i)
             time.sleep(0.05)
+
+
 if __name__ == '__main__':
     print ('Program is starting ... ')
     import sys
@@ -142,7 +144,3 @@ if __name__ == '__main__':
         test_Adc()  
     elif sys.argv[1] == 'Buzzer':   
         test_Buzzer()
-        
-        
-        
-        
