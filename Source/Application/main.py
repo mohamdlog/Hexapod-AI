@@ -1,6 +1,9 @@
-#Import everything in the control module, 
-#including functions, classes, variables, and more.
-from Control import *
+import os
+import sys
+
+sys.path.append(os.path.abspath(".."))
+
+from Code.Server.Control import *
 
 #Creating object 'control' of 'Control' class.
 c=Control()

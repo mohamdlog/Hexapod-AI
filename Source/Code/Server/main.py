@@ -9,7 +9,7 @@ class Service():
                 
     def server_on(self):
         if self.active == True:
-             print("Server is already activated. Enter 'n' to deactivate the server.")
+             print("Server is already activated. Enter '0' to de-activate the server.")
         else:
             self.server.turn_on_server()
             self.video = threading.Thread(target = self.server.transmission_video)
@@ -17,11 +17,11 @@ class Service():
             self.instruction = threading.Thread(target = self.server.receive_instruction)
             self.instruction.start()
             self.active = True
-            print("\nServer activated. Enter 'n' to de-activate the server.")
+            print("\nServer activated. Enter '0' to de-activate the server.")
 
     def server_off(self):
         if self.active == False:
-             print("Server is already deactivated. Enter 'y' to activate the server.")
+             print("Server is already deactivated. Enter '1' to activate the server.")
         else:
             try:
                 stop_thread(self.video)
@@ -35,23 +35,18 @@ class Service():
             except Exception as e:
                     print(e)
             self.active = False
-            print("\nServer de-activated. Enter 'y' to activate the server.")
+            print("\nServer de-activated. Enter '1' to activate the server.")
 
 
 if __name__ == '__main__':
     server = Service()
-    print("NOTE: Do not exit without de-activating the server\n")
 
-    start = input("Enter 'y' to activate the server, or 'n' to de-activate the server: ").lower()
-
-    if start == 'y':
-         server.server_on()
-    elif start == 'n':
-         server.server_off()
+    print("NOTE: Do not exit without de-activating the server.\n")
+    print("Enter '1' to activate the server, or '0' to de-activate the server: ")
     
     while True:
-        status = input().lower()
-        if status == 'y':
+        status = input()
+        if status == '1':
              server.server_on()
-        elif status == 'n':
+        elif status == '0':
              server.server_off()

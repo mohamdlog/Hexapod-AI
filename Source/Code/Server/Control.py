@@ -1,20 +1,23 @@
 # -*- coding: utf-8 -*-
+import os
 import time
 import math
 import smbus
 import copy
-from IMU import *
-from PID import *
+from .IMU import *
+from .PID import *
 import threading
-from Servo import*
+from .Servo import*
 import numpy as np
 from gpiozero import OutputDevice
-from Command import COMMAND as cmd
+from .Command import COMMAND as cmd
 GPIO_4   = OutputDevice(4)     
 GPIO_4.off()
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 class Control:
     def __init__(self):
-
         self.imu=IMU()
         self.servo=Servo()
         self.move_flag=0x01
