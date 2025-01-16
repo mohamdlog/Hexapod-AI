@@ -1,8 +1,8 @@
 #coding:utf-8
-from .PCA9685 import PCA9685
+from PCA9685 import PCA9685
 import time 
 import math
-import smbus
+import smbus2
 def mapNum(value,fromLow,fromHigh,toLow,toHigh):
     return (toHigh-toLow)*(value-fromLow) / (fromHigh-fromLow) + toLow
 class Servo:

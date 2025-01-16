@@ -1,4 +1,4 @@
-import smbus
+import smbus2
 import time
 from ADCDevice import *
 

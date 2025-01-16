@@ -6,13 +6,13 @@
 # modification: 2020/04/21
 ########################################################################
 
-import smbus
+import smbus2
 
 class ADCDevice(object):
     def __init__(self):
         self.cmd = 0
         self.address = 0
-        self.bus=smbus.SMBus(1)
+        self.bus=smbus2.SMBus(1)
         # print("ADCDevice init")
         
     def detectI2C(self,addr):

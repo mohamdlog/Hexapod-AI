@@ -2,15 +2,15 @@
 import os
 import time
 import math
-import smbus
+import smbus2
 import copy
-from .IMU import *
-from .PID import *
+from IMU import *
+from PID import *
 import threading
-from .Servo import*
+from Servo import*
 import numpy as np
 from gpiozero import OutputDevice
-from .Command import COMMAND as cmd
+from Command import COMMAND as cmd
 GPIO_4   = OutputDevice(4)     
 GPIO_4.off()
 
