@@ -4,10 +4,6 @@ import time
 import fcntl
 import socket
 import struct
-from picamera2 import Picamera2,Preview
-from picamera2.encoders import JpegEncoder
-from picamera2.outputs import FileOutput
-from picamera2.encoders import Quality
 from threading import Condition
 import threading
 from Led import *
