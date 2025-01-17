@@ -60,4 +60,4 @@ While initially focused on the Freenove Hexapod, the goal is to build an adaptab
 
 - Follow this [tutorial](assets/Tutorial.pdf) for setup and testing.
 
-- For calibration, download the appropriate client from the original repository, which is compatible with our server, to calibrate the spider.
+- To calibrate the spider, download the appropriate client from the original repository. It is compatible with the server.

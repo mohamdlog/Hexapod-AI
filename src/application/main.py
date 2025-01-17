@@ -1,9 +1,9 @@
 import os
 import sys
 
-sys.path.append(os.path.abspath(".."))
+sys.path.append(os.path.abspath(os.path.join("..", "code")))
 
-from Code.Server.Control import *
+from Control import *
 
 #Creating object 'control' of 'Control' class.
 c=Control()
