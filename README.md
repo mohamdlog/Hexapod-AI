@@ -50,12 +50,14 @@ While initially focused on the Freenove Hexapod, the goal is to build an adaptab
     ```bash
     pip install -r requirements.txt
     ```
+
 ## Tips
 - If sudo elevation is needed, run:
     ```bash
-    sudo path/to/Hexapod-AI/venv/bin/python script.py
+    sudo /path/to/Hexapod-AI/venv/bin/python script.py
     ```
     This will use the virtual environment's Python interpreter.
 
 - Follow this [tutorial](assets/Tutorial.pdf) for setup and testing.
+
 - For calibration, download the appropriate client from the original repository, which is compatible with our server, to calibrate the spider.

@@ -15,16 +15,6 @@ from ADC import *
 from Ultrasonic import *
 from Command import COMMAND as cmd
 
-class StreamingOutput(io.BufferedIOBase):
-    def __init__(self):
-        self.frame = None
-        self.condition = Condition()
-
-    def write(self, buf):
-        with self.condition:
-            self.frame = buf
-            self.condition.notify_all()
-
 class Server:
     def __init__(self):
         self.tcp_flag=False
@@ -35,84 +25,55 @@ class Server:
         self.control=Control()
         self.sonic=Ultrasonic()
         self.control.Thread_conditiona.start()
+    
     def get_interface_ip(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         return socket.inet_ntoa(fcntl.ioctl(s.fileno(),
                                             0x8915,
                                             struct.pack('256s',b'wlan0'[:15])
                                             )[20:24])
+    
     def turn_on_server(self):
-        #ip adress
+        # IP Address
         HOST=self.get_interface_ip()
-        #Port 8002 for video transmission
+
+        # Port 8002 for video transmission
         self.server_socket = socket.socket()
         self.server_socket.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEPORT,1)
         self.server_socket.bind((HOST, 8002))              
         self.server_socket.listen(1)
         
-        #Port 5002 is used for instruction sending and receiving
+        # Port 5002 for instruction sending and receiving
         self.server_socket1 = socket.socket()
         self.server_socket1.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEPORT,1)
         self.server_socket1.bind((HOST, 5002))
         self.server_socket1.listen(1)
+        
         print('Server address: '+HOST)
         
     def turn_off_server(self):
-        try:
-            self.connection.close()
-            self.connection1.close()
-        except :
-            print ('\n'+"No client connection")
+        self.server_socket.close()
+        self.server_socket1.close()
     
     def reset_server(self):
         self.turn_off_server()
         self.turn_on_server()
-        self.video=threading.Thread(target=self.transmission_video)
         self.instruction=threading.Thread(target=self.receive_instruction)
-        self.video.start()
         self.instruction.start()
+
     def send_data(self,connect,data):
         try:
             connect.send(data.encode('utf-8'))
             #print("send",data)
         except Exception as e:
             print(e)
-    def transmission_video(self):
-        try:
-            self.connection,self.client_address = self.server_socket.accept()
-            self.connection=self.connection.makefile('wb')
-        except:
-            pass
-        self.server_socket.close()
-        print ("socket video connected ... ")
-        camera = Picamera2()
-        camera.configure(camera.create_video_configuration(main={"size": (400, 300)}))
-        output = StreamingOutput()
-        encoder = JpegEncoder(q=90)
-        camera.start_recording(encoder, FileOutput(output),quality=Quality.VERY_HIGH) 
-        while True:
-            with output.condition:
-                output.condition.wait()
-                frame = output.frame
-            try:                
-                lenFrame = len(output.frame) 
-                #print("output .length:",lenFrame)
-                lengthBin = struct.pack('<I', lenFrame)
-                self.connection.write(lengthBin)
-                self.connection.write(frame)
-            except Exception as e:
-                camera.stop_recording()
-                camera.close()
-                print ("End transmit ... " )
-                break
-
+    
     def receive_instruction(self):
         try:
             self.connection1,self.client_address1 = self.server_socket1.accept()
-            print ("Client connection successful !")
+            print ("Client connection successful!")
         except:
-            print ("Client connect failed")
-        self.server_socket1.close()
+            pass
         
         while True:
             try:
@@ -207,6 +168,6 @@ class Server:
             pass
         print("close_recv")
 
-
 if __name__ == '__main__':
     pass
+    

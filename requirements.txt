@@ -7,4 +7,3 @@ RPi.GPIO
 pigpio
 lgpio
 adafruit-blinka
-keyboard
