@@ -1,98 +1,63 @@
-## Freenove Big Hexapod Robot Kit for Raspberry Pi
+# Hexapod-AI
 
-> A Hexapod Robot Kit for Raspberry Pi.
+<img src='assets/Hexapod.png' width='50%'/>
 
-<img src='Picture/icon.png' width='50%'/>
+## Welcome
+This project is designed to provide the following features and capabilities:
 
-### Connection Board Version
+1. **Operate Entirely in Headless Mode**  
+The system is built to function without requiring a graphical user interface, including the server.
 
-<table>
-  <tr>
-    <th>PCB Version</th>
-    <th>PCB Picture</th>
-  </tr>
-  <tr>
-    <td>V1.0</td>
-    <td align="center">
-      <img src='Picture/PCB_V1.0.png' width='30%' alt='V1.0'/>
-    </td>
-  </tr>
-  <tr>
-    <td>V2.0</td>
-    <td align="center">
-      <img src='Picture/PCB_V2.0.png' width='30%' alt='V2.0'/>
-    </td>
-  </tr>
-</table>
+2. **Develop a Custom CLI-Friendly Client**  
+A custom command-line interface (CLI) client. Key functionalities include:
+   - Controlling the spider’s behavior.
+   - Monitoring system status and logs.
+   - Retrieving or managing scene recording data.
 
-### Download
+3. **ROS2 for Communication and Control**  
+ROS2 (Robot Operating System 2) is the backbone of the system’s communication. It provides support for:
+   - **Node-Based Architecture:** The spider, obstacle detection, and data recording each run as independent ROS2 nodes.
+   - **Inter-Node Communication:** Nodes use ROS2 topics and services to share data, such as movement commands, obstacle sensor readings, and scene recording updates.
 
-### Download
+4. **Simulate Spider Movements with Obstacle Avoidance and Scene Recording**  
+The focus is to simulate a spider capable of dynamic movement and environment interaction:
+   - **Random Walk:** A pseudo-random algorithm guides the spider’s movements.
+   - **Obstacle Avoidance:** The spider identifies and navigate around obstacles.
+   - **Scene Recording:** The system captures and stores environmental data, movement paths, and interaction details using ROS2’s data management tools. This information is used for machine learning.
 
-* **Use command in console**
+5. **Expand Compatibility to Other Hexapod Robots**  
+While initially focused on the Freenove Hexapod, the goal is to build an adaptable framework that can work with other hexapod robots as well.
 
-	Run following command to download all the files in this repository.
-
-	`git clone https://github.com/Freenove/Freenove_Big_Hexapod_Robot_Kit_for_Raspberry_Pi.git`
-
-* **Manually download in browser**
-
-	Click the green "Clone or download" button, then click "Download ZIP" button in the pop-up window.
-	Do NOT click the "Open in Desktop" button, it will lead you to install Github software.
-
-> If you meet any difficulties, please contact our support team for help.
-
-### Support
-
-Freenove provides free and quick customer support. Including but not limited to:
-
-* Quality problems of products
-* Using Problems of products
-* Questions of learning and creation
-* Opinions and suggestions
-* Ideas and thoughts
-
-Please send an email to:
-
-[support@freenove.com](mailto:support@freenove.com)
-
-We will reply to you within one working day.
-
-### Purchase
-
-Please visit the following page to purchase our products:
-
-http://store.freenove.com
-
-Business customers please contact us through the following email address:
-
-[sale@freenove.com](mailto:sale@freenove.com)
-
-### Copyright
-
-All the files in this repository are released under [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/).
-
-![markdown](https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)
-
-This means you can use them on your own derived works, in part or completely. But NOT for the purpose of commercial use.
-You can find a copy of the license in this repository.
-
-Freenove brand and logo are copyright of Freenove Creative Technology Co., Ltd. Can't be used without formal permission.
+## Prerequisites
+- [Freenove Hexapod](https://www.amazon.com/Freenove-Big-Hexapod-Robot-Kit-Raspberry-Pi-Balancing-Recognition-Ultrasonic/dp/B08M5DXS2P?crid=3KV2K72VN8OIK&dib=eyJ2IjoiMSJ9.hyUjFCpcxtDvB6cSLdESXZvB2Vyu2BZE702Opav_4pw362Y-leX2nhRihGUpyvatdfUFLYhrkhYVxXUzxyAaLYfVc6g1PVaMHt4uJv-dwMYlmFLEGvaQ66BU7SMynz0brOpnYqBRpgNcHqetpvmbAYEbJFhWCXfYBug0f2YO52OM-B7dpcoSzVk0aRrdsl8ctKsNe2Z-5jhl1crJfvMoAoC_Rb0cIi2KP_QZGddGFhQDT2tlPQ7p6cW_mbHIsw2SRd_kYq8g11BzwAtgp8MguQXNNt87BzRrXcaZ3WkcEdLDOFxf6ls9B6-_Yfo1_SkcWOprh6HFUTzrcMW271oe0_Pxq7GHw0h3ORTjLPz_pTlnpLJPJwS5Xsgi3Srrqcr_.Z9MeEfegRmxxC1aoamTnySzmuAeN6PyndgJWAVI4-uA&dib_tag=se&keywords=freenove+hexapod&qid=1737096509&s=electronics&sprefix=freenove+hexapod%2Celectronics%2C87&sr=1-1_)
+- [Ubuntu for Raspberry Pi](https://ubuntu.com/download/raspberry-pi/thank-you?version=24.04.1&architecture=server-arm64+raspi)
 
 
-### About
+## Setup
+1. In the root of the project, run the setup script: 
+    ```bash
+    python setup.py
+    ```
+2. Create a virtual envirnment:
+    ```bash
+    python -m venv venv
+    ```
+3. Activate the virtual enviornment:
+    ```bash
+    source venv/bin/activate
+    ```
+4. Install the necessary dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Freenove is an open-source electronics platform.
+## Tips
+- If sudo elevation is needed, run:
+    ```bash
+    sudo /path/to/Hexapod-AI/venv/bin/python script.py
+    ```
+    This will use the virtual environment's Python interpreter.
 
-Freenove is committed to helping customer quickly realize the creative idea and product prototypes, making it easy to get started for enthusiasts of programing and electronics and launching innovative open source products.
+- Follow this [tutorial](assets/Tutorial.pdf) for setup and testing.
 
-Our services include:
-
-* Robot kits
-* Learning kits for Arduino, Raspberry Pi and micro:bit
-* Electronic components and modules, tools
-* Product customization service
-
-Our code and circuit are open source. You can obtain the details and the latest information through visiting the following web site:
-
-http://www.freenove.com
+- To calibrate the spider, download the appropriate client from the original repository. It is compatible with the server.

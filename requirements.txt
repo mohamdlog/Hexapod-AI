@@ -1,0 +1,9 @@
+rpi_ws281x
+spidev
+numpy
+gpiozero
+smbus2
+RPi.GPIO
+pigpio
+lgpio
+adafruit-blinka
